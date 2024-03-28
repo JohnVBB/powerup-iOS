@@ -1,0 +1,55 @@
+workflows:
+  ios-native-quick-start:
+    name: iOS Native
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: CM
+    environment:
+      ios_signing:
+        distribution_type: development
+        bundle_identifier: me.johnvaragoulis.flixio
+      vars:
+        BUNDLE_ID: "me.johnvaragoulis.flixio"
+        XCODE_WORKSPACE: "Playtube.xcworkspace"
+        XCODE_SCHEME: "Playtube"
+        APP_STORE_APPLE_ID: 6470138209
+      xcode: 14.0 # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
+      cocoapods: default
+    scripts:
+      - name: Install CocoaPods dependencies
+        script: | 
+          pod install
+      - name: Set up provisioning profiles settings on Xcode project
+        script: xcode-project use-profiles
+      - name: Build ipa for distribution
+        script: | 
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+    publishing:
+      email:
+        recipients:
+          - johnvaragoulis@gmail.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: true
+      app_store_connect:
+        auth: integration
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: false
+      #  beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+        #  - group name 1
+         # - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
