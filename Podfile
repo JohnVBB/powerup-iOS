@@ -20,7 +20,6 @@ target 'Powerup' do
   pod 'GoogleSignIn', '5.0.0'
   pod 'FBSDKLoginKit'
   pod 'UIView-Shimmer'
-  pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftEventBus', :tag => '3.0.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
   pod 'FittedSheets'
   pod 'ActiveLabel'
