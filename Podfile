@@ -10,7 +10,6 @@ target 'Powerup' do
   
   # Pods for Playtube
   pod 'IQKeyboardManagerSwift'
-  pod 'Alamofire'
   pod 'SwiftyBeaver'
   pod 'JGProgressHUD'
   pod 'Toast-Swift', '~> 4.0.0'
@@ -20,7 +19,6 @@ target 'Powerup' do
   pod 'DropDown'
   pod 'GoogleSignIn', '5.0.0'
   pod 'FBSDKLoginKit'
-  pod 'OneSignal', '>= 2.6.2', '< 3.0'
   pod 'UIView-Shimmer'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftEventBus', :tag => '3.0.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
