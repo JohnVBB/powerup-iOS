@@ -11,8 +11,8 @@ workflows:
         bundle_identifier: me.johnvaragoulis.flixio
       vars:
         BUNDLE_ID: "me.johnvaragoulis.flixio"
-        XCODE_WORKSPACE: "Playtube.xcworkspace"
-        XCODE_SCHEME: "Playtube"
+        XCODE_WORKSPACE: "Powerup.xcworkspace"
+        XCODE_SCHEME: "Powerup"
         APP_STORE_APPLE_ID: 6470138209
       xcode: 14.0 # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
       cocoapods: default
